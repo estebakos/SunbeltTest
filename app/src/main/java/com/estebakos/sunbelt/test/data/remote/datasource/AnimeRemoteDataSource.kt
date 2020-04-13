@@ -3,6 +3,7 @@ package com.estebakos.sunbelt.test.data.remote.datasource
 import com.estebakos.sunbelt.test.base.Output
 import com.estebakos.sunbelt.test.data.AnimeDataMapper
 import com.estebakos.sunbelt.test.data.remote.api.AnimeApi
+import com.estebakos.sunbelt.test.ui.model.AnimeDetailUI
 import com.estebakos.sunbelt.test.ui.model.AnimeListUI
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -24,15 +25,15 @@ class AnimeRemoteDataSource @Inject constructor(
             Output.Error(e)
         }
 
-/*    suspend fun getAnimeDetail(id: Int): Output<RecipeDetailUI> =
+    suspend fun getAnimeDetail(id: Int): Output<AnimeDetailUI> =
         try {
-            val recipeDetailsResponse = withContext(Dispatchers.IO) {
-                animeApi.getRecipeDetails(id)
+            val animeDetailResponse = withContext(Dispatchers.IO) {
+                animeApi.getAnimeDetail(id)
             }
 
-            val recipeDetails = RecipeDetailsRemoteToUI.map(recipeDetailsResponse)
-            Output.Success(recipeDetails)
+            val animeDetail = AnimeDataMapper.AnimeDetailRemoteToUI.map(animeDetailResponse)
+            Output.Success(animeDetail)
         } catch (e: Exception) {
             Output.Error(e)
-        }*/
+        }
 }

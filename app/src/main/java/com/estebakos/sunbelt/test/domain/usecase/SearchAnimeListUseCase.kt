@@ -9,9 +9,9 @@ import javax.inject.Inject
 class SearchAnimeListUseCase @Inject constructor(private val animeRepository: AnimeRepository) {
 
     suspend fun execute(query: String, page: Int = 1): Output<List<AnimeListUI>> {
-        var animeListOutput: Output<List<AnimeListUI>> = Output.Success((listOf()))
+        var animeListOutput: Output<List<AnimeListUI>>
 
-        animeRepository.getAnimeList("%$query%", page)?.let { output ->
+        animeRepository.getAnimeList("%$query%", page).let { output ->
             animeListOutput = if (output is Output.Success) {
                 animeRepository.insertAnimeList(output.data)
                 Output.Success(output.data)
@@ -21,7 +21,7 @@ class SearchAnimeListUseCase @Inject constructor(private val animeRepository: An
         }
 
         if (animeListOutput is Output.Error) {
-            animeRepository.searchLocalAnimeList("%$query%")?.let { output ->
+            animeRepository.searchLocalAnimeList("%$query%").let { output ->
                 animeListOutput = if (output is Output.Success) {
                     Output.Success(output.data)
                 } else {

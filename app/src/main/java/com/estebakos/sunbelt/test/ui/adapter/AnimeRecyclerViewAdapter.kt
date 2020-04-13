@@ -12,7 +12,7 @@ import com.estebakos.sunbelt.test.ui.model.AnimeListUI
 import kotlinx.android.synthetic.main.item_anime.view.*
 
 class AnimeRecyclerViewAdapter(
-    private var values: List<AnimeListUI>,
+    private var animeList: List<AnimeListUI>,
     private val listener: (AnimeListUI) -> Unit
 ) : RecyclerView.Adapter<AnimeRecyclerViewAdapter.ViewHolder>() {
 
@@ -23,22 +23,32 @@ class AnimeRecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = values[position]
-        holder.tvTitle.text = item.title
-        holder.tvSynopsis.text = item.synopsis
-        Glide.with(holder.view).load(item.imageUrl).into(holder.ivCover)
-
-        with(holder.view) {
-            setOnClickListener {
-            }
-        }
+        val item = animeList[position]
+        holder.bind(item, listener)
     }
 
-    override fun getItemCount(): Int = values.size
+    override fun getItemCount(): Int = animeList.size
 
-    inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        val tvTitle: TextView = view.tv_title_anime_list
-        val tvSynopsis: TextView = view.tv_synopsis_anime_list
-        val ivCover: ImageView = view.iv_anime_list
+    inner class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
+        private val tvTitle: TextView = view.tv_title_anime_list
+        private val tvSynopsis: TextView = view.tv_synopsis_anime_list
+        private val ivCover: ImageView = view.iv_anime_list
+
+        fun bind(
+            item: AnimeListUI,
+            listener: (AnimeListUI) -> Unit
+        ) {
+            tvTitle.text = item.title
+            tvSynopsis.text = item.synopsis
+            Glide.with(view).load(item.imageUrl).into(ivCover)
+
+            with(view) {
+                setOnClickListener {
+                    listener(
+                        item
+                    )
+                }
+            }
+        }
     }
 }

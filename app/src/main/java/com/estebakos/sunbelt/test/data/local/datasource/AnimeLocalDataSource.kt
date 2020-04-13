@@ -11,7 +11,7 @@ class AnimeLocalDataSource @Inject constructor(
     private val dao: AnimeDao
 ) {
 
-    suspend fun getAnimeList(): Output<List<AnimeListUI>>? =
+    suspend fun getAnimeList(): Output<List<AnimeListUI>> =
         try {
             val itemDomain = AnimeDataMapper.AnimeListCacheToUI.map(dao.getAll())
             Output.Success(itemDomain)
@@ -19,7 +19,7 @@ class AnimeLocalDataSource @Inject constructor(
             Output.Error(IOException("Exception ${e.message}"))
         }
 
-    suspend fun searchByQuery(query: String): Output<List<AnimeListUI>>? =
+    suspend fun searchByQuery(query: String): Output<List<AnimeListUI>> =
         try {
             val itemDomain = AnimeDataMapper.AnimeListCacheToUI.map(dao.findByQuery(query))
             Output.Success(itemDomain)

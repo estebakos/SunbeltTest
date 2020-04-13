@@ -2,7 +2,9 @@ package com.estebakos.sunbelt.test.data
 
 import com.estebakos.sunbelt.test.base.BaseMapper
 import com.estebakos.sunbelt.test.data.local.entity.AnimeListEntity
+import com.estebakos.sunbelt.test.data.remote.model.AnimeDetailResponse
 import com.estebakos.sunbelt.test.data.remote.model.AnimeListResponseItem
+import com.estebakos.sunbelt.test.ui.model.AnimeDetailUI
 import com.estebakos.sunbelt.test.ui.model.AnimeListUI
 
 object AnimeDataMapper {
@@ -42,6 +44,31 @@ object AnimeDataMapper {
                     title = it.title,
                     synopsis = it.synopsis,
                     imageUrl = it.imageUrl
+                )
+            }
+        }
+    }
+
+    object AnimeDetailRemoteToUI : BaseMapper<AnimeDetailResponse, AnimeDetailUI> {
+        override fun map(type: AnimeDetailResponse): AnimeDetailUI {
+            return with(type) {
+                AnimeDetailUI(
+                    animeId = animeId,
+                    title = title,
+                    rated = rated,
+                    imageUrl = imageUrl,
+                    airing = airing,
+                    synopsis = synopsis,
+                    type = this.type,
+                    episodes = if (episodes != null) {
+                        episodes!!
+                    } else {
+                        0
+                    },
+                    score = score,
+                    startDate = startDate,
+                    endDate = endDate,
+                    url = url
                 )
             }
         }

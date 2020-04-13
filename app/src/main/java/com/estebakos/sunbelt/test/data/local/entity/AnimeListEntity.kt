@@ -11,9 +11,9 @@ data class AnimeListEntity(
     @ColumnInfo(name = "anime_id")
     var animeId: Int,
     @ColumnInfo(name = "image_url")
-    var imageUrl: String? = null,
+    var imageUrl: String,
     @ColumnInfo(name = "title")
-    var title: String? = null,
+    var title: String,
     @ColumnInfo(name = "synopsis")
-    var synopsis: String? = null
+    var synopsis: String
 )

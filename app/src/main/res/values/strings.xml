@@ -4,4 +4,10 @@
     <string name="anime_list">Lista de anime</string>
     <string name="anime_list_image">Cover de la serie</string>
     <string name="no_results">No se encontró ningún animé con este criterio de búsqueda</string>
+    <string name="welcome_title">Bienvenidos al app de prueba para Sunbelt</string>
+    <string name="welcome_description">Hago parte del mismo recycler view, pero soy un adapter diferente, usado en un merge adapter</string>
+    <string name="click_to_discard">Imagen para descartar card de bienvenida</string>
+    <string name="anime_detail_episodes">"Episodios: %1$d"</string>
+    <string name="anime_detail_rate">"Calificación: %1$.1f"</string>
+    <string name="no_internet">Para acceder al detalle, debes estar conectado a internet</string>
 </resources>
