@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SunbeltTest</string>
+    <string name="app_name">Sunbelt</string>
     <string name="search_title">Buscar</string>
     <string name="anime_list">Lista de anime</string>
     <string name="anime_list_image">Cover de la serie</string>
