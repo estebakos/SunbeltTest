@@ -2,4 +2,6 @@
     <string name="app_name">SunbeltTest</string>
     <string name="search_title">Buscar</string>
     <string name="anime_list">Lista de anime</string>
+    <string name="anime_list_image">Cover de la serie</string>
+    <string name="no_results">No se encontró ningún animé con este criterio de búsqueda</string>
 </resources>

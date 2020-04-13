@@ -9,7 +9,7 @@ data class AnimeEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     @ColumnInfo(name = "anime_id")
-    var animeId: String? = null,
+    var animeId: Int,
     @ColumnInfo(name = "url")
     var url: String?,
     @ColumnInfo(name = "image_url")

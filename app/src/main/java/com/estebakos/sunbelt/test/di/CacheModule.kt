@@ -3,6 +3,7 @@ package com.estebakos.sunbelt.test.di
 import android.content.Context
 import androidx.room.Room
 import com.estebakos.sunbelt.test.data.local.SunbeltDatabase
+import com.estebakos.sunbelt.test.data.local.dao.AnimeDao
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -18,9 +19,9 @@ object CacheModule {
             .build()
     }
 
-    /*@Singleton
+    @Singleton
     @Provides
-    fun provideStorageInfoDao(database: TripoliDatabase): StorageInfoDao {
-        return database.storageInfoDao()
-    }*/
+    fun provideStorageInfoDao(database: SunbeltDatabase): AnimeDao {
+        return database.animeDao()
+    }
 }
